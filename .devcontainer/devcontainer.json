@@ -2,9 +2,9 @@
   "name": "Frontend",
   "dockerComposeFile": ["../compose.yml"],
   "service": "frontend",
-  "shutdownAction": "none",
   "workspaceFolder": "/workspace",
   "remoteUser": "developer",
+  "postCreateCommand": "volta install node@22.11.0 & volta install pnpm@9.14.2",
   "customizations": {
     "vscode": {
       "extensions": [
