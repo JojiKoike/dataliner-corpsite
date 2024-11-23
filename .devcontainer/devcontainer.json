@@ -1,0 +1,74 @@
+{
+  "name": "Frontend",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "frontend",
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "developer",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.copilot",
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "eamodio.gitlens",
+        "donjayamanne.githistory",
+        "codezombiech.git",
+        "redjue.git-commit-plugin",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "streetsidesoftware.code-spell-checker",
+        "mosapride.zenkaku",
+        "oderwat.indent-rainbow",
+        "usernamehw.errorlens",
+        "ecmel.vscode-html-css",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "xabikos.javascript",
+        "dbaeumer.vscode-eslint",
+        "christian-kohler.path-intellisense",
+        "astro-build.astro-vscode",
+        "bradlc.vscode-tailwindcss",
+        "yzhang.markdown-all-in-one",
+        "vscodevim.vim",
+        "tamasfe.even-better-toml",
+        "natqe.reload",
+        "gruntfuggly.todo-tree",
+        "alefragnani.book",
+        "ms-ceintl.vscode-language-pack-japanese",
+        "vscode-icons-team.vscode-icons",
+        "pkief.material-icon-theme",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "workbench.colorCustomizations": {
+          "titleBar.activeBackground": "#8fc604",
+          "titleBar.activeForeground": "#000000",
+          "activityBar.background": "#8fc604",
+          "activityBar.foreground": "#000000"
+        },
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+        "editor.bracketPairColorization.enabled": true,
+        "editor.guides.bracketPairs": true,
+        "editor.quickSuggestions": {
+          "other": "on",
+          "comments": "off",
+          "strings": "on"
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        }
+      }
+    }
+  }
+}
