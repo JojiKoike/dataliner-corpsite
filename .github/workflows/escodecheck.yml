@@ -22,14 +22,16 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
 
-      - name: pnpmをインストール
-        run: npm install -g pnpm
+      - name: pnpmをセットアップ
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9.14.2'
 
       - name: 依存関係をインストール
-        run: pnpm install
+        run: cd ./dataliner-corpsite && pnpm install
 
       - name: ESLintによる静的解析
-        run: pnpm run lint
+        run: cd ./dataliner-coprpsite && pnpm run lint
 
       - name: Prettierによるフォーマットチェック
-        run: pnpm run format:check
+        run: cd ./dataliner-corpsite && pnpm run format:check
