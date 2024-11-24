@@ -4,7 +4,7 @@
   "service": "frontend",
   "workspaceFolder": "/workspace",
   "remoteUser": "developer",
-  "postCreateCommand": "volta install node@22.11.0 & volta install pnpm@9.14.2",
+  "postCreateCommand": "git config --global safe.directory /workspace && volta install node@22.11.0 && volta install pnpm@9.14.2",
   "customizations": {
     "vscode": {
       "extensions": [
