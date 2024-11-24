@@ -1,0 +1,36 @@
+name: Lint and Prettier Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.jsをセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: pnpmをセットアップ
+        uses: pnpm/action-setup@v4
+        with:
+          version: '9.14.2'
+
+      - name: 依存関係をインストール
+        run: cd ./dataliner-corpsite && pnpm install
+
+      - name: ESLintによる静的解析
+        run: cd ./dataliner-corpsite && pnpm run lint
+
+      - name: Prettierによるフォーマットチェック
+        run: cd ./dataliner-corpsite && pnpm run format:check
