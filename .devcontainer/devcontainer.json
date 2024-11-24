@@ -32,6 +32,7 @@
         "bradlc.vscode-tailwindcss",
         "yzhang.markdown-all-in-one",
         "vscodevim.vim",
+        "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
         "natqe.reload",
         "gruntfuggly.todo-tree",
@@ -67,6 +68,17 @@
           "other": "on",
           "comments": "off",
           "strings": "on"
+        },
+        "[dockercompose]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml",
+          "editor.insertSpaces": true,
+          "editor.tabSize": 2,
+          "editor.autoIndent": "advanced",
+          "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+          }
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
