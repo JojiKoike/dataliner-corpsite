@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "^5.1.2",
     "astro": "^4.16.13",
     "autoprefixer": "^10.4.20",
+    "newt-client-js": "^3.3.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.7.2"
