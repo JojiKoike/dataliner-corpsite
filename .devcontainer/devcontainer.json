@@ -69,7 +69,7 @@
           "comments": "off",
           "strings": "on"
         },
-        "[dockercompose]": {
+        "[compose]": {
           "editor.defaultFormatter": "redhat.vscode-yaml",
           "editor.insertSpaces": true,
           "editor.tabSize": 2,
