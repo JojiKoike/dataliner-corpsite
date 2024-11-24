@@ -59,5 +59,4 @@ SHELL ["/usr/bin/zsh", "-l", "-c"]
 
 # Astro開発環境用
 ENV HOST 0.0.0.0
-EXPOSE 4321
-EXPOSE 9323
+EXPOSE 4321 9323
