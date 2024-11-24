@@ -30,7 +30,7 @@ jobs:
         run: cd ./dataliner-corpsite && pnpm install
 
       - name: ESLintによる静的解析
-        run: cd ./dataliner-coprpsite && pnpm run lint
+        run: cd ./dataliner-corpsite && pnpm run lint
 
       - name: Prettierによるフォーマットチェック
         run: cd ./dataliner-corpsite && pnpm run format:check
