@@ -1,15 +1,29 @@
 ---
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import { newtClient } from '../lib/newt';
+import type { Article } from '../lib/newt';
+
+const { items: articles } = await newtClient.getContents<Article>({
+  appUid: 'blog',
+  modelUid: 'article',
+  query: {
+    select: ['title', 'slug', 'body'],
+  },
+});
 ---
 
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Astro + TailwindCSS</title>
-  </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">Hello, world!</h1>
-  </body>
-</html>
+<Layout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
+  <main>
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <a href={`/articles/${article.slug}`}>
+              <h2>{article.title}</h2>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
