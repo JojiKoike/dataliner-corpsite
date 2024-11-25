@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="お問い合わせページ">
+  <div>
+    <h1>Contact us</h1>
+    <form
+      method="post"
+      action="https://data-liner-com.form.newt.so/v1/qWUsZa2hy"
+    >
+      <label for="name">
+        Name
+        <input id="name" name="name" />
+      </label>
+      <label for="email">
+        Email
+        <input id="email" name="email" type="email" />
+      </label>
+      <label for="message">
+        Message
+        <textarea id="message" name="message"></textarea>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</Layout>
