@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { newtClient } from '../lib/newt';
 import type { Article } from '../lib/newt';
 
@@ -12,7 +12,7 @@ const { items: articles } = await newtClient.getContents<Article>({
 });
 ---
 
-<Layout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
+<BaseLayout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
   <main>
     <ul>
       {
@@ -26,4 +26,4 @@ const { items: articles } = await newtClient.getContents<Article>({
       }
     </ul>
   </main>
-</Layout>
+</BaseLayout>
