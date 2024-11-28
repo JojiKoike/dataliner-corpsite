@@ -1,29 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { newtClient } from '../lib/newt';
-import type { Article } from '../lib/newt';
-
-const { items: articles } = await newtClient.getContents<Article>({
-  appUid: 'blog',
-  modelUid: 'article',
-  query: {
-    select: ['title', 'slug', 'body'],
-  },
-});
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
-  <main>
-    <ul>
-      {
-        articles.map((article) => (
-          <li>
-            <a href={`/articles/${article.slug}`}>
-              <h2>{article.title}</h2>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </main>
-</Layout>
+<BaseLayout title="DataLiner" description="DataLinerトップページ">
+  <div>
+    <!-- コンテンツ開始 -->
+    <section class="py-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900">
+          ようこそ、DataLinerのホームページへ
+        </h1>
+      </div>
+    </section>
+    <!-- 最新のブログ記事 -->
+    <section class="py-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900">最新のブログ記事</h2>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

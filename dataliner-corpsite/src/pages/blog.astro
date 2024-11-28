@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { newtClient } from '../lib/newt';
+import type { Article } from '../lib/newt';
+
+const { items: articles } = await newtClient.getContents<Article>({
+  appUid: 'blog',
+  modelUid: 'article',
+  query: {
+    select: ['title', 'slug', 'body'],
+  },
+});
+---
+
+<BaseLayout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
+  <div>
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <a href={`/articles/${article.slug}`}>
+              <h2>{article.title}</h2>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

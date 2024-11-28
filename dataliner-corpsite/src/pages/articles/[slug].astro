@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { newtClient } from '../../lib/newt';
 import type { Article } from '../../lib/newt';
 
@@ -24,9 +24,9 @@ export const getStaticPaths = async () => {
 const { article } = Astro.props;
 ---
 
-<Layout title={article.title} description="投稿詳細ページ">
+<BaseLayout title={article.title} description="投稿詳細ページ">
   <main>
     <h2>{article.title}</h2>
     <article set:html={article.body} />
   </main>
-</Layout>
+</BaseLayout>
