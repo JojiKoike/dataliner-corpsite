@@ -3,6 +3,7 @@ import astroParser from 'astro-eslint-parser';
 import astroRules from 'eslint-plugin-astro';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import a11y from 'eslint-plugin-jsx-a11y';
 
 export default [
 	{
@@ -22,6 +23,7 @@ export default [
 		plugins: {
 			astro: astroRules,
 			'@typescript-eslint': tsPlugin,
+			"jsx-a11y": a11y,
 		},
 		rules: {
 			...astroRules.configs.recommended.rules,
@@ -40,6 +42,7 @@ export default [
 		},
 		plugins: {
 			'@typescript-eslint': tsPlugin,
+			"jsx-a11y": a11y,
 		},
 		rules: {
 			...js.configs.recommended.rules,
