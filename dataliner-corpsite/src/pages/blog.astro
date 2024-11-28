@@ -13,7 +13,7 @@ const { items: articles } = await newtClient.getContents<Article>({
 ---
 
 <BaseLayout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
-  <main>
+  <div>
     <ul>
       {
         articles.map((article) => (
@@ -25,5 +25,5 @@ const { items: articles } = await newtClient.getContents<Article>({
         ))
       }
     </ul>
-  </main>
+  </div>
 </BaseLayout>
