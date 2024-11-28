@@ -11,6 +11,8 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,astro}\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,astro,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,astro,css,md}\"",
+    "lint:style": "stylelint '**/*.{css,scss,astro,html}' --config stylelint.config.mjs",
+    "lint:style:fix": "stylelint '**/*.{css,scss,astro,html}' --fix --config stylelint.config.mjs",
     "prepare": "cd ../ && husky install ./dataliner-corpsite/.husky"
   },
   "lint-staged": {
@@ -47,9 +49,12 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.10",
+    "postcss-html": "^1.7.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "stylelint": "^16.10.0"
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-tailwindcss": "^0.0.7"
   }
 }
