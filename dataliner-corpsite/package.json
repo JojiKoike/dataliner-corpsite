@@ -16,6 +16,9 @@
     "prepare": "cd ../ && husky install ./dataliner-corpsite/.husky"
   },
   "lint-staged": {
+    "*": [
+      "secretlint"
+    ],
     "*.{js,jsx,ts,tsx,astro}": [
       "eslint --fix",
       "prettier --write"
@@ -41,6 +44,13 @@
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "@secretlint/secretlint-rule-basicauth": "^9.0.0",
+    "@secretlint/secretlint-rule-gcp": "^9.0.0",
+    "@secretlint/secretlint-rule-github": "^9.0.0",
+    "@secretlint/secretlint-rule-no-dotenv": "^9.0.0",
+    "@secretlint/secretlint-rule-npm": "^9.0.0",
+    "@secretlint/secretlint-rule-pattern": "^9.0.0",
+    "@secretlint/secretlint-rule-privatekey": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "astro-eslint-parser": "^1.1.0",
@@ -53,6 +63,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "secretlint": "^9.0.0",
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-tailwindcss": "^0.0.7"
