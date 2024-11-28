@@ -10,7 +10,7 @@ const Header: React.FC = () => {
         <div className="flex h-16 items-center justify-between">
           {/* ロゴと会社名 */}
           <div className="flex flex-shrink-0 items-center">
-            <Logo className="mr-2 h-8 w-8" />
+            <Logo useImage={false} className="mr-2 h-8 w-8" />
           </div>
           {/* PC用ナビゲーション */}
           <div className="hidden md:flex">
