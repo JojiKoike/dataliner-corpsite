@@ -60,6 +60,9 @@
         "[astro]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
+        "astro.language-server.runtime": "node",
+        "astro.language-server.trace.server": "verbose",
+        "astro.language-server.workspaceFolders": ["./dataliner-corpsite"],
         "eslint.validate": ["javascript", "typescript", "astro"],
         "eslint.useFlatConfig": true,
         "editor.bracketPairColorization.enabled": true,
