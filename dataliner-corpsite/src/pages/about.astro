@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { newtClient } from '../lib/newt';
+import type { Article } from '../lib/newt';
+
+const response = await newtClient.getContent<Article>({
+  appUid: 'document-site',
+  modelUid: 'article',
+  contentId: '61e93243616290001858fe14',
+  query: {
+    select: ['title', 'body'],
+  },
+});
 ---
 
 <BaseLayout title="DataLiner" description="事業概要">
@@ -7,7 +18,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- コンテンツ開始 -->
     <section class="py-8">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">DataLinerについて</h1>
+        <h2>{response.title}</h2>
+        <div>
+          <article set:html={response.body} />
+        </div>
       </div>
     </section>
   </div>
