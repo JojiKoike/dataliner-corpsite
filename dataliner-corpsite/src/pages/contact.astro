@@ -3,25 +3,88 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact" description="お問い合わせページ">
-  <div>
-    <h1>Contact us</h1>
+  <div class="flex min-h-screen items-center justify-center bg-gray-100 px-4">
     <form
+      class="w-full max-w-lg rounded-lg bg-white p-6 shadow-md"
       method="post"
       action="https://data-liner-com.form.newt.so/v1/qWUsZa2hy"
+      aria-labelledby="form-title"
+      role="form"
     >
-      <label for="name">
-        Name
-        <input id="name" name="name" />
-      </label>
-      <label for="email">
-        Email
-        <input id="email" name="email" type="email" />
-      </label>
-      <label for="message">
-        Message
-        <textarea id="message" name="message"></textarea>
-      </label>
-      <button type="submit">Submit</button>
+      <!-- Form Title -->
+      <h2
+        id="form-title"
+        class="mb-4 text-center text-2xl font-bold text-gray-700"
+      >
+        Contact Us
+      </h2>
+
+      <!-- Name Field -->
+      <div class="mb-4">
+        <label for="name" class="mb-2 block font-medium text-gray-700">
+          Name <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="w-full rounded-lg border px-4 py-2 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Your Name"
+          aria-required="true"
+          required
+        />
+      </div>
+
+      <!-- Email Field -->
+      <div class="mb-4">
+        <label for="email" class="mb-2 block font-medium text-gray-700">
+          Email <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="w-full rounded-lg border px-4 py-2 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Your Email"
+          aria-required="true"
+          required
+        />
+      </div>
+
+      <!-- Message Field -->
+      <div class="mb-4">
+        <label for="message" class="mb-2 block font-medium text-gray-700">
+          Message <span class="text-red-500">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          class="w-full rounded-lg border px-4 py-2 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Your Message"
+          aria-required="true"
+          required></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div
+        class="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-blue-500 px-6 py-3 text-white transition hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:w-auto"
+          aria-label="Submit the form"
+        >
+          Submit
+        </button>
+        <button
+          type="reset"
+          class="w-full rounded-lg bg-gray-200 px-6 py-3 text-gray-700 transition hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 sm:w-auto"
+          aria-label="Clear all form fields"
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   </div>
 </BaseLayout>
