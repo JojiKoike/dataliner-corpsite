@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <BaseLayout title="Contact" description="お問い合わせページ">
@@ -95,18 +94,18 @@ const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
 
 <script
   is:inline
-  src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}&hl=ja`}
+  src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}&hl=ja`}
 ></script>
 <script>
   const form = document.getElementById('form');
   form?.addEventListener('submit', submitFormData);
-  const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
 
   function submitFormData(event: Event) {
+    const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
     event.preventDefault();
     grecaptcha.ready(() => {
       grecaptcha
-        .execute(RECAPTCHA_SITE_KEY, {
+        .execute(`${recaptchaSiteKey}`, {
           action: 'submit',
         })
         .then(async (token: string) => {
@@ -134,9 +133,9 @@ const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
   }
 
   async function sendRequest(formData: FormData) {
-    const NEWT_FORM_UID = import.meta.env.NEWT_FORM_UID;
+    const newtFormUID = import.meta.env.PUBLIC_NEWT_FORM_UID;
     return await fetch(
-      `https://data-liner-com.form.newt.so/v1/${NEWT_FORM_UID}`,
+      `https://data-liner-com.form.newt.so/v1/${newtFormUID}`,
       {
         method: 'POST',
         body: formData,
