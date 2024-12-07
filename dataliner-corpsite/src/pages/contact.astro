@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <BaseLayout title="Contact" description="お問い合わせページ">
   <div class="flex min-h-screen items-center justify-center bg-gray-100 px-4">
     <form
+      id="form"
       class="w-full max-w-lg rounded-lg bg-white p-6 shadow-md md:max-w-2xl md:p-8"
-      method="post"
-      action="https://data-liner-com.form.newt.so/v1/qWUsZa2hy"
       aria-labelledby="form-title"
       role="form"
     >
@@ -91,3 +91,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </form>
   </div>
 </BaseLayout>
+
+<script
+  is:inline
+  src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}&hl=ja`}
+></script>
+<script>
+  const form = document.getElementById('form');
+  form?.addEventListener('submit', submitFormData);
+
+  function submitFormData(event: Event) {
+    const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+    event.preventDefault();
+    grecaptcha.ready(() => {
+      grecaptcha
+        .execute(`${recaptchaSiteKey}`, {
+          action: 'submit',
+        })
+        .then(async (token: string) => {
+          const target = event.target as typeof event.target & {
+            name: { value: string };
+            email: { value: string };
+            message: { value: string };
+          };
+
+          const data = {
+            name: target.name.value,
+            email: target.email.value,
+            message: target.message.value,
+            googleReCaptchaToken: token,
+          };
+
+          const formData = new FormData();
+          Object.entries(data).forEach(([key, value]) => {
+            formData.append(key, value);
+          });
+
+          await sendRequest(formData);
+        });
+    });
+  }
+
+  async function sendRequest(formData: FormData) {
+    const newtFormUID = import.meta.env.PUBLIC_NEWT_FORM_UID;
+    return await fetch(
+      `https://data-liner-com.form.newt.so/v1/${newtFormUID}`,
+      {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      }
+    );
+  }
+</script>
