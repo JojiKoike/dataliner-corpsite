@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogListItem from '../components/BlogListItem.astro';
 import { newtClient } from '../lib/newt';
 import type { Article } from '../lib/newt';
 
@@ -12,18 +13,23 @@ const { items: articles } = await newtClient.getContents<Article>({
 });
 ---
 
-<BaseLayout title="Newt Astro Blog" description="NewtとAstroを利用したブログ">
+<BaseLayout title="Blog" description="ブログ">
   <div>
-    <ul>
-      {
-        articles.map((article) => (
-          <li>
-            <a href={`/articles/${article.slug}`}>
-              <h2>{article.title}</h2>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <section class="py-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <h1 class="mb-6 text-3xl font-bold text-blue-800">Blog</h1>
+        <!-- Article List -->
+        <ul class="space-y-6">
+          {
+            articles.map(() => (
+              <li>
+                <BlogListItem />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
   </div>
 </BaseLayout>
