@@ -2,6 +2,7 @@ import { createClient } from 'newt-client-js';
 
 export interface Article {
   title: string;
+  _sys: Sys;
   abstract: string;
   slug: string;
   body: string;
@@ -9,6 +10,11 @@ export interface Article {
   tags: Tag[];
   coverImage: ArticleImage;
   meta: ArticleMeta;
+}
+
+export interface Sys {
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Category {
