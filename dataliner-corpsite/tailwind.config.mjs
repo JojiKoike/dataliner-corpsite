@@ -2,7 +2,11 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}'],
   theme: {
-    extend: {},
+    extend: {
+
+    },
   },
-  plugins: ['@tailwindcss/line-clamp'],
+  plugins: [
+    import('@tailwindcss/typography')
+  ],
 };
