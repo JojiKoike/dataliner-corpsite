@@ -1,0 +1,42 @@
+---
+import { newtClient } from '../lib/newt';
+import type { Article } from '../lib/newt';
+import BlogListItem from '../components/BlogListItem.astro';
+
+const { items: articles } = await newtClient.getContents<Article>({
+  appUid: 'blog',
+  modelUid: 'article',
+  query: {
+    select: [
+      'title',
+      'slug',
+      'abstract',
+      'body',
+      'coverImage',
+      'category',
+      'tags',
+      'meta',
+    ],
+  },
+});
+---
+
+<div>
+  <!-- Article List -->
+  <ul>
+    {
+      articles.map((article) => (
+        <li>
+          <BlogListItem
+            title={article.title}
+            slug={article.slug}
+            abstract={article.abstract}
+            category={article.category}
+            tags={article.tags}
+            coverImage={article.coverImage}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>

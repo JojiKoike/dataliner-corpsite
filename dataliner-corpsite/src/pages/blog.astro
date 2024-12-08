@@ -1,16 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogListItem from '../components/BlogListItem.astro';
-import { newtClient } from '../lib/newt';
-import type { Article } from '../lib/newt';
-
-const { items: articles } = await newtClient.getContents<Article>({
-  appUid: 'blog',
-  modelUid: 'article',
-  query: {
-    select: ['title', 'slug', 'body'],
-  },
-});
+import BlogList from '../components/BlogList.astro';
 ---
 
 <BaseLayout title="Blog" description="ブログ">
@@ -19,16 +9,8 @@ const { items: articles } = await newtClient.getContents<Article>({
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <h1 class="mb-6 text-3xl font-bold text-blue-800">Blog</h1>
-        <!-- Article List -->
-        <ul class="space-y-6">
-          {
-            articles.map(() => (
-              <li>
-                <BlogListItem />
-              </li>
-            ))
-          }
-        </ul>
+        <!-- Blog List -->
+        <BlogList />
       </div>
     </section>
   </div>
