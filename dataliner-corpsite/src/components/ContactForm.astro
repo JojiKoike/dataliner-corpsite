@@ -95,7 +95,16 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
             formData.append(key, value);
           });
 
-          await sendRequest(formData);
+          try {
+            const response = await sendRequest(formData);
+            if (response.ok) {
+              window.location.href = '/contact/thanks';
+            } else {
+              window.location.href = '/contact/error';
+            }
+          } catch (error) {
+            window.location.href = '/contact/error';
+          }
         });
     });
   }
