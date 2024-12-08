@@ -1,3 +1,40 @@
-@import url('tailwindcss/base');
-@import url('tailwindcss/components');
-@import url('tailwindcss/utilities');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Markdownコンテンツのスタイル */
+.prose h1 {
+  @apply mb-4 text-4xl font-bold text-blue-800;
+}
+
+.prose h2 {
+  @apply mb-2 mt-2 text-3xl font-semibold text-blue-700;
+}
+
+.prose h3 {
+  @apply mb-3 text-2xl font-medium text-blue-600;
+}
+
+.prose p {
+  @apply mb-2 text-base leading-relaxed text-gray-700;
+}
+
+.prose ul {
+  @apply list-disc space-y-2 pl-5;
+}
+
+.prose li {
+  @apply text-base text-gray-600;
+}
+
+.prose a {
+  @apply text-blue-600 underline hover:text-blue-500;
+}
+
+.prose blockquote {
+  @apply my-4 border-l-4 border-blue-500 py-2 pl-4 text-gray-700;
+}
+
+.prose code {
+  @apply rounded bg-gray-200 px-1 text-sm;
+}
