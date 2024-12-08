@@ -2,14 +2,22 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { newtClient } from '../../lib/newt';
 import type { Article } from '../../lib/newt';
-
+import { format } from 'date-fns';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const { items: articles } = await newtClient.getContents<Article>({
     appUid: 'blog',
     modelUid: 'article',
     query: {
-      select: ['title', 'slug', 'body'],
+      select: [
+        'title',
+        'slug',
+        'body',
+        '_sys',
+        'coverImage',
+        'category',
+        'tags',
+      ],
     },
   });
   return articles.map((article) => ({
@@ -27,7 +35,59 @@ const { article } = Astro.props;
 
 <BaseLayout title={article.title} description="投稿詳細ページ">
   <div>
-    <h2>{article.title}</h2>
-    <article set:html={article.body} />
+    <section>
+      <div class="mx-auto max-w-6xl bg-blue-50 px-4 py-8">
+        <!-- アイキャッチ画像 -->
+        <img
+          src={article.coverImage.src}
+          alt={article.coverImage.altText}
+          class="mb-6 h-64 w-full rounded-lg object-cover shadow-md"
+        />
+
+        <!-- カテゴリーとタグ -->
+        <div class="mb-4 flex flex-wrap items-center gap-4">
+          <!-- カテゴリー -->
+          <span
+            class="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700"
+            >Category: {article.category?.name}</span
+          >
+          <!-- タグ -->
+          <div class="flex flex-wrap gap-2">
+            {
+              article.tags.map((tag) => (
+                <span class="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700">
+                  #{tag.name}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- 作成日時と最終更新日時 -->
+        <div class="mb-6 text-sm text-gray-500">
+          <p>
+            Created: <time datetime={article._sys.createdAt}
+              >{
+                format(new Date(article._sys.createdAt), 'yyyy年MM月dd日 HH:mm')
+              }</time
+            >
+          </p>
+          <p>
+            Last Updated: <time datetime={article._sys.updatedAt}
+              >{
+                format(new Date(article._sys.updatedAt), 'yyyy年MM月dd日 HH:mm')
+              }</time
+            >
+          </p>
+        </div>
+
+        <div class="prose prose-blue max-w-none">
+          <!-- タイトル -->
+          <h1>{article.title}</h1>
+          <!-- 本文 -->
+          <article set:html={article.body} />
+        </div>
+      </div>
+    </section>
   </div>
 </BaseLayout>
