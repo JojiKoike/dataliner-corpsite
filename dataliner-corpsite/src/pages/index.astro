@@ -1,12 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { newtClient } from '../lib/newt';
-import type { Page } from '../lib/newt';
+import type { Page } from '../types/page/page';
 
-const response = await newtClient.getContent<Page>({
+const page = await newtClient.getFirstContent<Page>({
   appUid: 'landing-page',
   modelUid: 'landing-page',
-  contentId: '620c6d7782f1f80018295b80',
   query: {
     select: ['pageName', 'slug', 'meta', 'sections'],
   },
@@ -18,13 +17,10 @@ const response = await newtClient.getContent<Page>({
     <!-- コンテンツ開始 -->
     <section class="py-8">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">
-          {response.pageName}
-        </h1>
         {
-          response.sections.map((section) => (
-            <div>
-              <article set:html={section.data.text} />
+          page?.sections.map((section) => (
+            <div class="py-8">
+              <h2 class="text-2xl font-bold">{section.type}</h2>
             </div>
           ))
         }
