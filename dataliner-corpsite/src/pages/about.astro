@@ -1,12 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { newtClient } from '../lib/newt';
-import type { Article } from '../lib/newt';
+import type { Article } from '../types/docs/article';
 
-const response = await newtClient.getContent<Article>({
+const articles = await newtClient.getContents<Article>({
   appUid: 'document-site',
   modelUid: 'article',
-  contentId: '61e93243616290001858fe14',
   query: {
     select: ['title', 'body'],
   },
@@ -18,10 +17,13 @@ const response = await newtClient.getContent<Article>({
     <!-- コンテンツ開始 -->
     <section class="py-8">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2>{response.title}</h2>
-        <div>
-          <article set:html={response.body} />
-        </div>
+        {
+          articles.items.map((article) => (
+            <div class="py-8">
+              <h2 class="text-2xl font-bold">{article.title}</h2>
+            </div>
+          ))
+        }
       </div>
     </section>
   </div>
