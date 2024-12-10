@@ -1,6 +1,6 @@
 ---
 import { newtClient } from '../lib/newt';
-import type { Article } from '../lib/newt';
+import type { Article } from '../types/blog/article';
 import BlogListItem from '../components/BlogListItem.astro';
 
 const { items: articles } = await newtClient.getContents<Article>({

@@ -1,12 +1,14 @@
 ---
-import type { Category, Tag, ArticleImage } from '../lib/newt.ts';
+import type { Media } from 'newt-client-js';
+import type { Category } from '../types/blog/category';
+import type { Tag } from '../types/blog/tag';
 export interface Props {
   title: string;
   abstract: string;
   slug: string;
   category?: Category;
   tags: Tag[];
-  coverImage: ArticleImage;
+  coverImage?: Media;
 }
 
 const { title, slug, abstract, category, tags, coverImage } = Astro.props;
@@ -18,8 +20,8 @@ const { title, slug, abstract, category, tags, coverImage } = Astro.props;
 >
   <!-- Thumbnail -->
   <img
-    src={coverImage.src}
-    alt={coverImage.altText}
+    src={coverImage?.src}
+    alt={coverImage?.altText}
     class="h-48 w-full flex-shrink-0 object-cover sm:w-48"
   />
 
