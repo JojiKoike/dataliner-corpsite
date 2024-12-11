@@ -1,0 +1,35 @@
+---
+import type { Logo } from '../types/page/page';
+
+export interface Props {
+  logo: Logo;
+}
+
+const { logo } = Astro.props;
+---
+
+<section class="mb-16 px-6 sm:mb-24 sm:px-10">
+  {
+    logo.data.text && (
+      <h3
+        class="mb-4 text-center text-base font-normal text-gray-500"
+        set:html={logo.data.text}
+      />
+    )
+  }
+  <ul class="m-0 flex flex-wrap items-center justify-center p-0">
+    {
+      logo.data.logoImages.map((logoImage) => (
+        <li class="m-1 h-[36px] w-[100px] list-none sm:m-2 sm:h-[46px] sm:w-[125px]">
+          <img
+            class="h-full w-full object-contain"
+            src={logoImage.src}
+            alt={logoImage.altText}
+            width="125"
+            height="46"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</section>
