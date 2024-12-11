@@ -5,6 +5,7 @@ import Hero from '../components/Hero.astro';
 import Logo from '../components/Logo.astro';
 import FeatureImageFull from '../components/FeatureImageFull.astro';
 import FeatureImageRight from '../components/FeatureImageRight.astro';
+import FeatureImageLeft from '../components/FeatureImageLeft.astro';
 import type { Page } from '../types/page/page';
 
 const page = await newtClient.getFirstContent<Page>({
@@ -30,7 +31,7 @@ const page = await newtClient.getFirstContent<Page>({
         case 'FeatureImageRight':
           return <FeatureImageRight featureImageRight={section} />;
         case 'FeatureImageLeft':
-          return null;
+          return <FeatureImageLeft featureImageLeft={section} />;
         case 'Features3Columns':
           return null;
         case 'CTA':
