@@ -4,6 +4,7 @@ import { newtClient } from '../lib/newt';
 import Hero from '../components/Hero.astro';
 import Logo from '../components/Logo.astro';
 import FeatureImageFull from '../components/FeatureImageFull.astro';
+import FeatureImageRight from '../components/FeatureImageRight.astro';
 import type { Page } from '../types/page/page';
 
 const page = await newtClient.getFirstContent<Page>({
@@ -16,21 +17,29 @@ const page = await newtClient.getFirstContent<Page>({
 ---
 
 <BaseLayout title="DataLiner" description="DataLinerトップページ">
-  <div>
-    <!-- コンテンツ開始 -->
-    {
-      page?.sections.map((section) => {
-        switch (section.type) {
-          case 'Hero':
-            return <Hero hero={section} />;
-          case 'Logo':
-            return <Logo logo={section} />;
-          case 'FeatureImageFull':
-            return <FeatureImageFull featureImageFull={section} />;
-          default:
-            return null;
-        }
-      })
-    }
-  </div>
+  <!-- コンテンツ開始 -->
+  {
+    page?.sections.map((section) => {
+      switch (section.type) {
+        case 'Hero':
+          return <Hero hero={section} />;
+        case 'Logo':
+          return <Logo logo={section} />;
+        case 'FeatureImageFull':
+          return <FeatureImageFull featureImageFull={section} />;
+        case 'FeatureImageRight':
+          return <FeatureImageRight featureImageRight={section} />;
+        case 'FeatureImageLeft':
+          return null;
+        case 'Features3Columns':
+          return null;
+        case 'CTA':
+          return null;
+        case 'FAQ':
+          return null;
+        default:
+          return null;
+      }
+    })
+  }
 </BaseLayout>

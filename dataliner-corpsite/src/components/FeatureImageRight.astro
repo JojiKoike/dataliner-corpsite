@@ -1,0 +1,33 @@
+---
+import type { FeatureImageRight } from '../types/page/page';
+
+export interface Props {
+  featureImageRight: FeatureImageRight;
+}
+
+const { featureImageRight } = Astro.props;
+---
+
+<section class="mx-auto mb-16 max-w-screen-lg px-6 sm:mb-24 sm:px-10">
+  <div class="sm:px-15 flex flex-col sm:flex-row sm:items-center lg:px-20">
+    <div class="w-full sm:w-[48%] sm:pr-12">
+      <h3
+        class="mb-2 text-center text-base font-bold leading-relaxed sm:text-left sm:text-xl"
+        set:html={featureImageRight.data.titleCopy}
+      />
+      <p
+        class="mb-5 text-center text-lg text-gray-500 sm:mb-0 sm:text-left sm:text-xl"
+        set:html={featureImageRight.data.text}
+      />
+    </div>
+    <div class="mx-auto w-[80%] sm:w-[52%]">
+      <img
+        src={featureImageRight.data.image.src}
+        alt={featureImageRight.data.image.altText}
+        class="h-auto w-full"
+        width="407"
+        height="248"
+      />
+    </div>
+  </div>
+</section>
