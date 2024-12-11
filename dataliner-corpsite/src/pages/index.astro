@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { newtClient } from '../lib/newt';
 import Hero from '../components/Hero.astro';
 import Logo from '../components/Logo.astro';
+import FeatureImageFull from '../components/FeatureImageFull.astro';
 import type { Page } from '../types/page/page';
 
 const page = await newtClient.getFirstContent<Page>({
@@ -25,11 +26,7 @@ const page = await newtClient.getFirstContent<Page>({
           case 'Logo':
             return <Logo logo={section} />;
           case 'FeatureImageFull':
-            return (
-              <div class="py-8">
-                <h2 class="text-2xl font-bold">{section.type}</h2>
-              </div>
-            );
+            return <FeatureImageFull featureImageFull={section} />;
           default:
             return null;
         }
