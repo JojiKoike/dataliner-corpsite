@@ -37,8 +37,6 @@ const page = await newtClient.getFirstContent<Page>({
           return <Feature3Columns feature3Columns={section} />;
         case 'CTA':
           return <CTA cta={section} />;
-        case 'FAQ':
-          return null;
         default:
           return null;
       }
