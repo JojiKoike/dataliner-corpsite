@@ -1,0 +1,37 @@
+---
+import type { Features3Columns } from '../types/page/page';
+
+export interface Props {
+  feature3Columns: Features3Columns;
+}
+
+const { feature3Columns } = Astro.props;
+---
+
+<section class="mx-auto mb-16 max-w-screen-lg px-6 sm:mb-24 sm:px-10">
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-10">
+    {
+      feature3Columns.data.features.map((feature) => (
+        <div class="flex flex-col items-center text-center">
+          <div class="mb-5">
+            <img
+              src={feature.iconImage.src}
+              width="41"
+              height="41"
+              alt={feature.iconImage.altText}
+              class="h-16 w-16"
+            />
+          </div>
+
+          <div>
+            <h3
+              set:html={feature.titleCopy}
+              class="mb-4 text-lg font-bold leading-snug sm:text-xl"
+            />
+            <p set:html={feature.text} class="text-lg text-gray-500" />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
