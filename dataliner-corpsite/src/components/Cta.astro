@@ -1,0 +1,34 @@
+---
+import type { Cta } from '../types/page/page';
+
+export interface Props {
+  cta: Cta;
+}
+
+const { cta } = Astro.props;
+---
+
+<section
+  class="sm:py-15 mb-16 bg-gray-100 px-6 py-10 text-center sm:mb-24 sm:px-10"
+>
+  <h3
+    set:html={cta.data.titleCopy}
+    class="mb-2 text-xl font-bold leading-snug sm:mb-4 sm:text-2xl"
+  />
+  {
+    cta.data.text && (
+      <p
+        set:html={cta.data.text}
+        class="mb-4 text-lg text-gray-500 sm:mb-7 sm:text-xl"
+      />
+    )
+  }
+  <a
+    href={cta.data.ctaButton.url}
+    rel="noopener noreferrer"
+    target={cta.data.ctaButton.newTab ? '_blank' : ''}
+    class="inline-block rounded-md bg-white px-5 py-2.5 font-bold text-blue-600 transition-shadow hover:shadow-md hover:shadow-blue-700"
+  >
+    {cta.data.ctaButton.label}
+  </a>
+</section>
