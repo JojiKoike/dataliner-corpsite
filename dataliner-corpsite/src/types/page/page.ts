@@ -16,6 +16,7 @@ export interface Page extends Content {
     | FeatureImageLeft
     | Features3Columns
     | Cta
+    | Faq
   )[];
 }
 
@@ -96,5 +97,19 @@ export interface Cta extends Section {
     titleCopy: string;
     text?: string;
     ctaButton: Link;
+  };
+}
+
+export interface FaqItem {
+  _id: string;
+  question: string;
+  answer: string;
+}
+
+export interface Faq extends Section {
+  type: 'FAQ';
+  data: {
+    titleCopy: string;
+    items: FaqItem[];
   };
 }
