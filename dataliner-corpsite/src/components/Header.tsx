@@ -1,7 +1,7 @@
 import Logo from './Logo';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const Header: React.FC = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
