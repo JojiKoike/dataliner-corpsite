@@ -1,0 +1,29 @@
+---
+import type { FeatureImageFull } from '../types/page/page';
+
+export interface Props {
+  featureImageFull: FeatureImageFull;
+}
+
+const { featureImageFull } = Astro.props;
+---
+
+<section
+  class="mx-auto mb-16 max-w-screen-lg px-6 text-center sm:mb-24 sm:px-10"
+>
+  <h3
+    class="mb-2 text-xl font-bold leading-snug sm:text-3xl"
+    set:html={featureImageFull.data.titleCopy}
+  />
+  <p
+    class="mb-5 text-lg text-gray-500 sm:mb-9 sm:text-xl"
+    set:html={featureImageFull.data.text}
+  />
+  <img
+    class="h-auto w-full"
+    src={featureImageFull.data.image.src}
+    alt={featureImageFull.data.image.altText}
+    width="980"
+    height="307"
+  />
+</section>

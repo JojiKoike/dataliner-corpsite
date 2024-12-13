@@ -1,0 +1,51 @@
+---
+import type { Hero } from '../types/page/page';
+
+export interface Props {
+  hero: Hero;
+}
+
+const { hero } = Astro.props;
+---
+
+<section
+  class="w-full bg-gray-100 text-center sm:mb-24 sm:px-10 sm:text-left lg:px-20"
+>
+  <!-- Hero Inner -->
+  <div
+    class="relative mx-auto flex w-full flex-col items-center sm:max-w-screen-lg sm:flex-row sm:justify-between"
+  >
+    <!-- Hero Data -->
+    <div class="mb-8 w-full sm:mb-0 sm:w-2/5 lg:w-[40%]">
+      <p
+        class="mb-1 text-sm text-gray-500 sm:text-base"
+        set:html={hero.data.shoulderCopy}
+      />
+      <h2
+        class="mb-5 text-xl font-bold leading-snug sm:text-2xl lg:text-3xl"
+        set:html={hero.data.titleCopy}
+      />
+      <p
+        class="mb-4 text-sm text-gray-700 sm:text-base"
+        set:html={hero.data.text}
+      />
+      <a
+        href={hero.data.ctaButton.url}
+        rel="noreferrer noopener"
+        target={hero.data.ctaButton.newTab ? '_blank' : ''}
+        class="inline-block rounded-md bg-white px-5 py-3 font-bold text-blue-600 transition-shadow hover:shadow-md hover:shadow-blue-600"
+      >
+        {hero.data.ctaButton.label}
+      </a>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mx-auto w-full sm:w-3/5 lg:w-[56%]">
+      <img
+        src={hero.data.backgroundImage.src}
+        alt={hero.data.backgroundImage.altText}
+        class="h-auto w-full"
+      />
+    </div>
+  </div>
+</section>
