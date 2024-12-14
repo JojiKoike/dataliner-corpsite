@@ -6,8 +6,9 @@ interface ImportMetaEnv {
   readonly NEWT_API_TYPE: 'cdn' | 'api';
   readonly NEWT_LANDING_PAGE_APP_UID: string;
   readonly NEWT_LANDINg_PAGE_MODEL_UID: string;
-  readonly NEWT_ABOUT_APP_UID: string;
-  readonly NEWT_ABOUT_MODEL_UID: string;
+  readonly NEWT_DOCS_APP_UID: string;
+  readonly NEWT_DOCS_CATEGORY_MODEL_UID: string;
+  readonly NEWT_DOCS_ARTICLE_MODEL_UID: string;
   readonly NEWT_BLOG_APP_UID: string;
   readonly NEWT_BLOG_MODEL_UID: string;
   readonly PUBLIC_NEWT_FORM_UID: string;

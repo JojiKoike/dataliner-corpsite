@@ -1,0 +1,39 @@
+---
+import TwoColumnLayout from '../..//layouts/TwoColumnLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import { newtClient } from '../../lib/newt';
+import type { Article } from '../../types/docs/article';
+
+export const prerender = true;
+export const getStaticPaths = async () => {
+  const { items: articles } = await newtClient.getContents<Article>({
+    appUid: import.meta.env.NEWT_DOCS_APP_UID,
+    modelUid: import.meta.env.NEWT_DOCS_ARTICLE_MODEL_UID,
+    query: {
+      select: ['title', 'slug', 'body', '_sys', 'category'],
+    },
+  });
+  return articles.map((article) => ({
+    params: {
+      slug: article.slug,
+    },
+    props: {
+      article,
+    },
+  }));
+};
+
+const { article } = Astro.props;
+---
+
+<TwoColumnLayout title="DataLiner" description="About">
+  <div class="flex flex-col sm:flex-row">
+    <Navigation current={article} />
+    <article
+      class="min-w-0 flex-1 px-6 pb-[52px] pt-[108px] sm:px-0 sm:pt-[60px]"
+    >
+      <h1 class="mb-6 mt-[-6px] text-[2.8rem] font-bold">{article.title}</h1>
+      <div class="prose prose-lg" set:html={article.body} />
+    </article>
+  </div>
+</TwoColumnLayout>

@@ -26,9 +26,16 @@ const { title, description } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="min-he-screen flex flex-col bg-blue-50 text-gray-800">
-    <Header client:load />
-    <main class="flex-grow pt-16"><slot /></main>
-    <Footer />
+    <div class="relative w-full">
+      <Header client:load />
+      <main
+        class="mx-auto block min-h-0 max-w-screen-lg sm:flex sm:items-start sm:pb-0 sm:pl-[60px] sm:pr-[60px] sm:pt-[50px]"
+      >
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
     <SpeedInsights />
   </body>
 </html>
