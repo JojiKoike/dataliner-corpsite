@@ -1,30 +1,24 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { newtClient } from '../lib/newt';
-import type { Article } from '../types/docs/article';
+import TwoColumnLayout from '../layouts/TwoColumnLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import { getCategories, getArticles, getArticle } from '../lib/docs/newt.ts';
 
-const articles = await newtClient.getContents<Article>({
-  appUid: 'document-site',
-  modelUid: 'article',
-  query: {
-    select: ['title', 'body'],
-  },
-});
+const categories = await getCategories();
+if (categories.length === 0) {
+  throw new Error('No categories found');
+}
+const articles = await getArticles({ category: categories[0]._id });
+const article = await getArticle(articles[0].slug);
 ---
 
-<BaseLayout title="DataLiner" description="事業概要">
-  <div>
-    <!-- コンテンツ開始 -->
-    <section class="py-8">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {
-          articles.items.map((article) => (
-            <div class="py-8">
-              <h2 class="text-2xl font-bold">{article.title}</h2>
-            </div>
-          ))
-        }
-      </div>
-    </section>
+<TwoColumnLayout title="DataLiner" description="About">
+  <div class="flex flex-col sm:flex-row">
+    <Navigation current={article} />
+    <article
+      class="min-w-0 flex-1 px-6 pb-[52px] pt-[108px] sm:px-0 sm:pt-[60px]"
+    >
+      <h1 class="mb-6 mt-[-6px] text-[2.8rem] font-bold">{article.title}</h1>
+      <div class="prose prose-lg" set:html={article.body} />
+    </article>
   </div>
-</BaseLayout>
+</TwoColumnLayout>

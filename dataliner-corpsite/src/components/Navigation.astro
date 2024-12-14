@@ -1,0 +1,34 @@
+---
+import { getArticles, getCategories } from '../lib/docs/newt';
+import type { Article } from '../types/docs/article';
+import { NavigationCategory } from './NavigationCategory';
+import { NavigationArticleList } from './NavigationArticleList';
+
+export interface Props {
+  current: Article;
+}
+
+const { current } = Astro.props;
+
+const articles = await getArticles();
+const categories = await getCategories();
+const getArticlesOfCategory = (category: string) =>
+  articles.filter((article) => article.category._id === category);
+---
+
+<nav
+  class="sticky top-[50px] mr-[60px] hidden h-[calc(100vh-190px)] w-[30%] max-w-[240px] overflow-auto pb-[20px] pt-[60px] sm:block"
+>
+  <div class="mb-3">
+    {
+      categories.map((category) => (
+        <NavigationCategory category={category} current={current} client:load>
+          <NavigationArticleList
+            articles={getArticlesOfCategory(category._id)}
+            current={current}
+          />
+        </NavigationCategory>
+      ))
+    }
+  </div>
+</nav>
