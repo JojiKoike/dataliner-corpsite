@@ -1,0 +1,62 @@
+---
+export interface Props {
+  currentPage: number;
+  totalPages: number;
+  basePath: string;
+}
+
+const { currentPage, totalPages, basePath } = Astro.props;
+
+function createPaginationLinks() {
+  const links = [];
+  for (let i = 1; i <= totalPages; i++) {
+    links.push({
+      page: i,
+      isCurrent: i === currentPage,
+      url: `${basePath}/${i}`,
+    });
+  }
+  return links;
+}
+
+const paginationLinks = createPaginationLinks();
+---
+
+<nav class="mb-20 mt-8 flex justify-center space-x-2">
+  {
+    currentPage > 1 && (
+      <a
+        href={`${basePath}/${currentPage - 1}`}
+        class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+      >
+        前へ
+      </a>
+    )
+  }
+
+  {
+    paginationLinks.map((link) => (
+      <a
+        href={link.url}
+        class={`rounded px-4 py-2 ${
+          link.isCurrent
+            ? 'bg-blue-500 text-white'
+            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+        }`}
+      >
+        {link.page}
+      </a>
+    ))
+  }
+
+  {
+    currentPage < totalPages && (
+      <a
+        href={`${basePath}/${currentPage + 1}`}
+        class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+      >
+        次へ
+      </a>
+    )
+  }
+</nav>

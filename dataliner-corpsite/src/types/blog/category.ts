@@ -4,3 +4,7 @@ export interface Category extends Content {
   name: string;
   slug: string;
 }
+
+export interface CategoryWithCount extends Category {
+  count: number;
+}

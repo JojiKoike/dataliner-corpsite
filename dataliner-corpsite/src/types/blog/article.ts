@@ -16,3 +16,8 @@ export interface Article extends Content {
   category: Category;
   tags: Tag[];
 }
+
+export interface Archive {
+  year: number;
+  count: number;
+}

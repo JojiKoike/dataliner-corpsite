@@ -1,15 +1,28 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogList from '../components/BlogList.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import Side from '../components/Side.astro';
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Pagination from '../components/Pagination.astro';
+import { getArticles } from '../lib/blog/newt';
+const limit = Number(import.meta.env.NEWT_BLOG_ARTICLES_PER_PAGE_LIMIT) || 10;
+const { articles, total } = await getArticles({
+  limit,
+});
 ---
 
-<BaseLayout title="Blog" description="ブログ">
-  <div>
-    <section class="py-8">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <!-- Blog List -->
-        <BlogList />
-      </div>
-    </section>
+<BlogLayout title="Blog" description="ブログ">
+  <div class="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:space-x-8">
+      <main class="w-full lg:w-3/4">
+        <h2 class="mb-6 text-2xl font-bold">最新の記事</h2>
+        {articles.map((article) => <ArticleCard article={article} />)}
+        <Pagination
+          totalPages={Math.ceil(total / limit)}
+          currentPage={1}
+          basePath={'/blog'}
+        />
+      </main>
+      <Side />
+    </div>
   </div>
-</BaseLayout>
+</BlogLayout>
