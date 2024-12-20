@@ -11,7 +11,10 @@ const { article } = Astro.props;
 <article
   class="mb-5 flex h-[250px] w-full overflow-hidden rounded-lg bg-white shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg sm:h-[220px] sm:flex-row"
 >
-  <a href={`/articles/${article.slug}`} class="flex h-full w-full sm:flex-row">
+  <a
+    href={`/blog/articles/${article.slug}`}
+    class="flex h-full w-full sm:flex-row"
+  >
     <!-- Cover Image -->
     {
       article.coverImage ? (

@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { newtClient } from '../../lib/newt';
-import type { Article } from '../../types/blog/article';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { newtClient } from '../../../lib/newt';
+import type { Article } from '../../../types/blog/article';
 import { format } from 'date-fns';
 export const prerender = true;
 export const getStaticPaths = async () => {
