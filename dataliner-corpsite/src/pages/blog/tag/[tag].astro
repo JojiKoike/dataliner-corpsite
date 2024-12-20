@@ -11,32 +11,26 @@ export const getStaticPaths = async () => {
   const path = [];
 
   for (const tag of tags) {
-    const { total } = await getArticles({ tag: tag._id });
+    const { total } = await getArticles({ tags: tag._id });
     const maxPage = Math.ceil(total / limit);
-    const pages = Array.from({ length: maxPage }, (_, index) => index + 1);
-    for (const page of pages) {
-      const results = await getArticles({
-        tag: tag._id,
-        limit,
-        skip: limit * (page - 1),
-      });
-      path.push({
-        params: {
-          tag: tag.slug,
-          page: String(page),
-        },
-        props: {
-          tag: tag,
-          articles: results.articles,
-          currentPage: page,
-          totalPages: maxPage,
-        },
-      });
-    }
+    const results = await getArticles({
+      tags: tag._id,
+      limit,
+    });
+    path.push({
+      params: {
+        tag: tag.slug,
+      },
+      props: {
+        tag: tag,
+        articles: results.articles,
+        totalPages: maxPage,
+      },
+    });
   }
   return path;
 };
-const { tag, articles, currentPage, totalPages } = Astro.props;
+const { tag, articles, totalPages } = Astro.props;
 ---
 
 <BlogLayout title="Blog" description="ブログ">
@@ -47,8 +41,8 @@ const { tag, articles, currentPage, totalPages } = Astro.props;
         {articles.map((article) => <ArticleCard article={article} />)}
         <Pagination
           totalPages={totalPages}
-          currentPage={currentPage}
-          basePath={`/blog/${tag.slug}`}
+          currentPage={1}
+          basePath={`/blog/tag/${tag.slug}`}
         />
       </main>
       <Side />
