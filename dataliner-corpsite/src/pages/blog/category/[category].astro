@@ -13,30 +13,24 @@ export const getStaticPaths = async () => {
   for (const category of categories) {
     const { total } = await getArticles({ category: category._id });
     const maxPage = Math.ceil(total / limit);
-    const pages = Array.from({ length: maxPage }, (_, index) => index + 1);
-    for (const page of pages) {
-      const results = await getArticles({
-        category: category._id,
-        limit,
-        skip: limit * (page - 1),
-      });
-      path.push({
-        params: {
-          category: category.slug,
-          page: String(page),
-        },
-        props: {
-          category: category,
-          articles: results.articles,
-          currentPage: page,
-          totalPages: maxPage,
-        },
-      });
-    }
+    const results = await getArticles({
+      category: category._id,
+      limit,
+    });
+    path.push({
+      params: {
+        category: category.slug,
+      },
+      props: {
+        category: category,
+        articles: results.articles,
+        totalPages: maxPage,
+      },
+    });
   }
   return path;
 };
-const { category, articles, currentPage, totalPages } = Astro.props;
+const { category, articles, totalPages } = Astro.props;
 ---
 
 <BlogLayout title="Blog" description="ブログ">
@@ -47,8 +41,8 @@ const { category, articles, currentPage, totalPages } = Astro.props;
         {articles.map((article) => <ArticleCard article={article} />)}
         <Pagination
           totalPages={totalPages}
-          currentPage={currentPage}
-          basePath={`/blog/${category.slug}`}
+          currentPage={1}
+          basePath={`/blog/category/${category.slug}`}
         />
       </main>
       <Side />

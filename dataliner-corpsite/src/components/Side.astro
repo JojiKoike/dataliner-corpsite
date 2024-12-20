@@ -32,7 +32,7 @@ const archives = await getArchives();
           <li class="mb-1 mr-4 text-[1.4rem] lg:mr-0">
             <a
               class="text-gray-800 hover:underline"
-              href={`/blog/${category.slug}/1`}
+              href={`/blog/category/${category.slug}`}
             >
               {category.name} [{category.count}]
             </a>
@@ -66,7 +66,7 @@ const archives = await getArchives();
           <li class="mb-1 mr-4 text-[1.4rem] lg:mr-0">
             <a
               class="text-gray-800 hover:underline"
-              href={`/blog/${tag.slug}/1`}
+              href={`/blog/tag/${tag.slug}`}
             >
               {tag.name} [{tag.count}]
             </a>
@@ -99,7 +99,7 @@ const archives = await getArchives();
           <li class="mb-1 mr-4 text-[1.4rem] lg:mr-0">
             <a
               class="text-gray-800 hover:underline"
-              href={`/archives/${archive.year}`}
+              href={`/blog/archives/${archive.year}`}
             >
               {archive.year} [{archive.count}]
             </a>
