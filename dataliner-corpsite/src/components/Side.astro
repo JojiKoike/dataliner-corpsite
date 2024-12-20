@@ -64,7 +64,10 @@ const archives = await getArchives();
       {
         tags.map((tag) => (
           <li class="mb-1 mr-4 text-[1.4rem] lg:mr-0">
-            <a class="text-gray-800 hover:underline" href={`/tags/${tag.slug}`}>
+            <a
+              class="text-gray-800 hover:underline"
+              href={`/blog/${tag.slug}/1`}
+            >
               {tag.name} [{tag.count}]
             </a>
           </li>
