@@ -1,0 +1,7 @@
+---
+const { id = '', className = '', children } = Astro.props;
+---
+
+<h2 id={id} class={`text-2xl font-bold mb-6 ${className}`}>
+  <slot>{children}</slot>
+</h2>
