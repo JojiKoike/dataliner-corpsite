@@ -1,4 +1,5 @@
 ---
+import H2 from './atoms/H2.astro';
 import TextArea from './TextArea.astro';
 import TextInput from './TextInput.astro';
 const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
@@ -12,12 +13,7 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
     role="form"
   >
     <!-- Form Title -->
-    <h2
-      id="form-title"
-      class="mb-6 text-center text-2xl font-bold text-gray-700 md:text-3xl"
-    >
-      Contact Us
-    </h2>
+    <H2 id="form-title" className="text-center"> Contact Us </H2>
 
     <!-- Name Field -->
     <TextInput label="Name" name="name" placeholder="Your Name" required />

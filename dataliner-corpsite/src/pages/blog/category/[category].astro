@@ -4,6 +4,7 @@ import Side from '../../../components/Side.astro';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
 import { getArticles, getCategories } from '../../../lib/blog/newt';
+import H2 from '../../../components/atoms/H2.astro';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const limit = Number(import.meta.env.NEWT_BLOG_ARTICLES_PER_PAGE_LIMIT) || 10;
@@ -37,7 +38,7 @@ const { category, articles, totalPages } = Astro.props;
   <div class="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8">
     <div class="lg:flex lg:space-x-8">
       <main class="w-full lg:w-3/4">
-        <h2 class="mb-6 text-2xl font-bold">カテゴリ：{category.name}</h2>
+        <H2 id="blog-category-list-title">カテゴリ：{category.name}</H2>
         {articles.map((article) => <ArticleCard article={article} />)}
         <Pagination
           totalPages={totalPages}
