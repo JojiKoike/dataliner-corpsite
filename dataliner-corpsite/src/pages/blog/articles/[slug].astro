@@ -1,4 +1,5 @@
 ---
+import H1 from '../../../components/atoms/H1.astro';
 import Side from '../../../components/Side.astro';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import { newtClient } from '../../../lib/newt';
@@ -87,12 +88,13 @@ const { article } = Astro.props;
               </p>
             </div>
 
-            <div class="prose prose-blue max-w-none">
-              <!-- タイトル -->
-              <h1>{article.title}</h1>
-              <!-- 本文 -->
-              <article set:html={article.body} />
-            </div>
+            <!-- タイトル -->
+            <H1 id="blog-article-title">{article.title}</H1>
+            <!-- 本文 -->
+            <article
+              class="prose prose-blue max-w-none"
+              set:html={article.body}
+            />
           </div>
         </div>
       </main>
