@@ -2,6 +2,6 @@
 const { id = '', className = '', children } = Astro.props;
 ---
 
-<h1 id={id} class={`text-4xl font-bold mb-6 ${className}`}>
+<h1 id={id} class={`text-4xl font-bold ${className}`}>
   <slot>{children}</slot>
 </h1>

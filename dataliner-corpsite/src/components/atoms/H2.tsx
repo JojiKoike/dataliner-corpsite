@@ -8,7 +8,7 @@ type Props = {
 
 const H2: React.FC<Props> = ({ id, className, children }) => {
   return (
-    <h2 id={id} className={`mb-6 text-2xl font-bold ${className}`}>
+    <h2 id={id} className={`text-2xl font-bold ${className}`}>
       {children}
     </h2>
   );
