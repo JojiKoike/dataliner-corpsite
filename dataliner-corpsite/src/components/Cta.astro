@@ -1,5 +1,6 @@
 ---
 import type { Cta } from '../types/page/page';
+import H3 from './atoms/H3.astro';
 
 export interface Props {
   cta: Cta;
@@ -11,9 +12,10 @@ const { cta } = Astro.props;
 <section
   class="sm:py-15 mb-16 bg-gray-100 px-6 py-10 text-center sm:mb-24 sm:px-10"
 >
-  <h3
+  <H3
     set:html={cta.data.titleCopy}
-    class="mb-2 text-xl font-bold leading-snug sm:mb-4 sm:text-2xl"
+    className="mb-2"
+    id="landing_page-cta-title"
   />
   {
     cta.data.text && (

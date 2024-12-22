@@ -1,5 +1,6 @@
 ---
 import type { Features3Columns } from '../types/page/page';
+import H3 from './atoms/H3.astro';
 
 export interface Props {
   feature3Columns: Features3Columns;
@@ -24,9 +25,10 @@ const { feature3Columns } = Astro.props;
           </div>
 
           <div>
-            <h3
+            <H3
               set:html={feature.titleCopy}
-              class="mb-4 text-lg font-bold leading-snug sm:text-xl"
+              className="mb-4"
+              id="landing_page-feature_3columns-title"
             />
             <p set:html={feature.text} class="text-lg text-gray-500" />
           </div>

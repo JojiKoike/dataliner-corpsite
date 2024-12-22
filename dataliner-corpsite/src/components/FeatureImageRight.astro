@@ -1,5 +1,6 @@
 ---
 import type { FeatureImageRight } from '../types/page/page';
+import H3 from './atoms/H3.astro';
 
 export interface Props {
   featureImageRight: FeatureImageRight;
@@ -11,8 +12,9 @@ const { featureImageRight } = Astro.props;
 <section class="mx-auto mb-16 max-w-screen-lg px-6 sm:mb-24 sm:px-10">
   <div class="sm:px-15 flex flex-col sm:flex-row sm:items-center lg:px-20">
     <div class="w-full sm:w-[48%] sm:pr-12">
-      <h3
-        class="mb-2 text-center text-base font-bold leading-relaxed sm:text-left sm:text-xl"
+      <H3
+        className="mb-2"
+        id="landing_page-feature_image_right-title"
         set:html={featureImageRight.data.titleCopy}
       />
       <p
