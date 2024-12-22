@@ -1,10 +1,10 @@
 ---
 import H1 from '../../../components/atoms/H1.astro';
+import YearMonthDate from '../../../components/atoms/YearMonthDate.astro';
 import Side from '../../../components/Side.astro';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import { newtClient } from '../../../lib/newt';
 import type { Article } from '../../../types/blog/article';
-import { format } from 'date-fns';
 export const prerender = true;
 export const getStaticPaths = async () => {
   const { items: articles } = await newtClient.getContents<Article>({
@@ -73,18 +73,16 @@ const { article } = Astro.props;
             <!-- 作成日時と最終更新日時 -->
             <div class="mb-6 text-sm text-gray-500">
               <p>
-                Created: <time datetime={article._sys.createdAt}
-                  >{
-                    format(new Date(article._sys.createdAt), 'yyyy年MM月dd日')
-                  }</time
-                >
+                Created: <YearMonthDate
+                  id="blog-article-created_at"
+                  datetime={article._sys.createdAt}
+                />
               </p>
               <p>
-                Last Updated: <time datetime={article._sys.updatedAt}
-                  >{
-                    format(new Date(article._sys.updatedAt), 'yyyy年MM月dd日')
-                  }</time
-                >
+                Last Updated: <YearMonthDate
+                  id="blog-article-last_updated"
+                  datetime={article._sys.updatedAt}
+                />
               </p>
             </div>
 
