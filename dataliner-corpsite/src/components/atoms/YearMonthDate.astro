@@ -1,0 +1,13 @@
+---
+import { format } from 'date-fns';
+type Props = {
+  id: string;
+  datetime: string;
+  className?: string;
+};
+const { id, datetime, className } = Astro.props;
+---
+
+<time id={id} datetime={datetime} class=`${className}`>
+  {format(new Date(datetime), 'yyyy年MM月dd日')}
+</time>
