@@ -1,4 +1,4 @@
-import LastUpdatedAt from '../../../src/components/atoms/LastUpdatedAt.astro';
+import LastUpdatedAt from '../../../../src/components/atoms/icons/LastUpdatedAt.astro';
 
 export default {
   component: LastUpdatedAt,

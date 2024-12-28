@@ -1,4 +1,4 @@
-import Category from '../../../src/components/atoms/Category.astro';
+import Category from '../../../../src/components/atoms/labels/Category.astro';
 
 export default {
   component: Category,

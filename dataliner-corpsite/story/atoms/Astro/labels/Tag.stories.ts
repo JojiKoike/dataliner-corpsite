@@ -1,4 +1,4 @@
-import Tag from '../../../src/components/atoms/Tag.astro';
+import Tag from '../../../../src/components/atoms/labels/Tag.astro';
 
 export default {
   component: Tag,

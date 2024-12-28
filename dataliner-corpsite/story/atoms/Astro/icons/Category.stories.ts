@@ -1,7 +1,7 @@
-import CategoryIcon from '../../../src/components/atoms/CategoryIcon.astro';
+import Category from '../../../../src/components/atoms/icons/Category.astro';
 
 export default {
-  component: CategoryIcon,
+  component: Category,
 };
 
 export const Outline = {

@@ -1,4 +1,4 @@
-import OptimizedImage from '../../../src/components/atoms/OptimizedIImage.astro';
+import OptimizedImage from '../../../../src/components/atoms/images/OptimizedIImage.astro';
 
 export default {
   component: OptimizedImage,

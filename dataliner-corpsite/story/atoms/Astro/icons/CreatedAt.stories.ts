@@ -1,4 +1,4 @@
-import CreatedAt from '../../../src/components/atoms/CreatedAt.astro';
+import CreatedAt from '../../../../src/components/atoms/icons/CreatedAt.astro';
 
 export default {
   component: CreatedAt,

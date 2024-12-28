@@ -1,7 +1,7 @@
-import TagIcon from '../../../src/components/atoms/TagIcon.astro';
+import Tag from '../../../../src/components/atoms/icons/Tag.astro';
 
 export default {
-  component: TagIcon,
+  component: Tag,
 };
 
 export const Outline = {
