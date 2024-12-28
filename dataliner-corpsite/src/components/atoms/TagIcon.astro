@@ -1,0 +1,14 @@
+---
+import { Icon } from 'astro-icon/components';
+type Props = {
+  id: string;
+  isFilled?: boolean;
+  className?: string;
+};
+
+const { id, isFilled = false, className = '' } = Astro.props;
+---
+
+<span id={id} class={className}>
+  <Icon name={isFilled ? 'mdi:label' : 'mdi:label-outline'} />
+</span>
