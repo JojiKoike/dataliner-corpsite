@@ -1,13 +1,15 @@
 ---
 type Props = {
+  id: string;
   category: string;
   className?: string;
 };
 
-const { category, className = '' } = Astro.props as Props;
+const { id, category, className = '' } = Astro.props as Props;
 ---
 
 <span
+  id={id}
   class={`rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700 & ${className}`}
 >
   <slot>{category}</slot>
