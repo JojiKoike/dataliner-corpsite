@@ -41,7 +41,8 @@
         "vscode-icons-team.vscode-icons",
         "pkief.material-icon-theme",
         "mikestead.dotenv",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "wakatime.vscode-wakatime"
       ],
       "settings": {
         "workbench.colorCustomizations": {
